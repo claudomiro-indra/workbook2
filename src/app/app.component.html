@@ -1,0 +1,36 @@
+<div class="form-group">
+  <form>
+    <div class="form-group">
+      <mat-form-field appearance="fill" >
+        <mat-label>Escolha uma data</mat-label>
+        <input matInput [matDatepicker]="picker" (dateChange)="dataMudou($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker  [startAt]="dataInicial" ></mat-datepicker>
+      </mat-form-field>
+      </div>
+
+    <div *ngIf="dataJaEscolhida">
+      <div class="form-group">
+        <mat-label>Escritório: </mat-label>
+        <mat-form-field>
+          <mat-select name="local" [(ngModel)]="local" (selectionChange)="localMudou($event)">
+            <mat-option *ngFor="let local of locais" [value]="local.sigla">
+              {{local.nome}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-label>Posição: </mat-label>
+          <mat-form-field>
+            <mat-select name="posicao" [(ngModel)]="posicao"  >
+              <mat-option *ngFor="let posicao of posicoes" [value]="posicao.codigo">
+                {{posicao.extenso}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+            </div>
+  </form>
+  </div>
